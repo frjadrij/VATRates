@@ -1,0 +1,62 @@
+﻿@model VATRates.Bll.ViewModels.VATRatesVM
+
+@{
+    ViewBag.Title = "Highest VAT Rates";
+}
+
+
+<div class="row">
+    <h3><i class="glyphicon glyphicon-arrow-up"></i> @ViewBag.Title</h3>
+    <table class="table">
+        <tr>
+            <th>
+                Country
+            </th>
+            <th>
+                Standard Rate
+            </th>
+            <th>
+                Reduced Rate
+            </th>
+            <th>
+                Reduced Rate1
+            </th>
+            <th>
+                Reduced Rate2
+            </th>
+            <th>
+                Super Reduced Rate
+            </th>
+            <th>
+                Parking Rate
+            </th>
+        </tr>
+
+        @foreach (var item in Model.TopThreeRates)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Country)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StandardRate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReducedRate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReducedRate1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReducedRate2)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SuperReducedRate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ParkingRate)
+                </td>
+            </tr>
+        }
+    </table>
+</div>

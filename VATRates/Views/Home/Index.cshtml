@@ -1,0 +1,36 @@
+﻿
+@model VATRates.Bll.ViewModels.VATRatesVM
+
+@{
+    ViewBag.Title = "VAT Rates";
+}
+
+<div class="row" style="margin-top:10px;">
+    <div class="col-md-2">
+        <button class="btn print-btn">Print VAT Rates</button>
+    </div>
+</div>
+<div class="container">
+
+    @if ((Model.BottomThreeRates == null || Model.BottomThreeRates.Count == 0) && (Model.BottomThreeRates == null || Model.BottomThreeRates.Count == 0))
+    {
+        <h1>Error while fetching VAT rates</h1>
+    }
+    else
+    {
+        @Html.Partial("_HighestRatesList", Model)
+        @Html.Partial("_LowestRatesList", Model)
+    }
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+            $(document).ready(function () {
+                $("button.print-btn").click(function () {          
+                    $(".container").printThis({
+                        importCSS: true
+                    });
+                });
+            });
+    </script>
+}
